@@ -296,13 +296,26 @@ img {
   display: block;
 }
 
-@media (max-width: 1023px) {
+@media (max-width: 767px) {
+  .zeus-back-button {
+    position: fixed;
+    left: 50%;
+    bottom: 74px; /* Hovering 10px above the 64px sticky bottom CTA bar */
+    top: auto;
+    transform: translateX(-50%);
+    margin: 0;
+    z-index: 101;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
   .zeus-back-button {
     position: absolute;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
     margin: 0;
+    z-index: 101;
   }
 }
 
