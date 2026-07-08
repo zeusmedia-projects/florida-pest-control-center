@@ -2329,3 +2329,26 @@ details.disclosure[open] summary::after {
     height: 100% !important;
   }
 }
+
+/* Global Trust Tags styles (as found on Specials page) */
+.trust-tags {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-muted);
+}
+.trust-tag {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.trust-tag-dot {
+  width: 6px;
+  height: 6px;
+  background-color: var(--color-secondary);
+  border-radius: 50%;
+}
