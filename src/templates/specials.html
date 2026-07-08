@@ -1,0 +1,862 @@
+<style>
+  /* Specials Page Scoped Styles */
+  .specials-hero {
+    padding: 5rem 0 4rem;
+    background-color: var(--bg-primary);
+    text-align: center;
+    border-bottom: 1px solid var(--border-color);
+  }
+  .specials-hero-container {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  .trust-tags {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--color-muted);
+  }
+  .trust-tag {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .trust-tag-dot {
+    width: 6px;
+    height: 6px;
+    background-color: var(--color-secondary);
+    border-radius: 50%;
+  }
+  
+  /* Offer Cards Grid */
+  .offer-grid {
+    margin-top: 1.5rem;
+  }
+  .offer-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 2.25rem 2rem;
+    background-color: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  .offer-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+  }
+  .offer-badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background-color: rgba(242, 184, 75, 0.1);
+    color: #b38600;
+    padding: 0.35rem 0.75rem;
+    border-radius: 50px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .offer-icon-wrapper {
+    width: 48px;
+    height: 48px;
+    background-color: rgba(23, 74, 54, 0.05);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-primary);
+    margin-bottom: 1.5rem;
+  }
+  .offer-card h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+    color: var(--color-primary);
+    padding-right: 4rem; /* Avoid badge overlap */
+  }
+  .offer-card p {
+    font-size: 0.95rem;
+    color: var(--color-muted);
+    line-height: 1.5;
+    flex-grow: 1;
+    margin-bottom: 1.5rem;
+  }
+  .offer-meta {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+  .offer-meta-icon {
+    color: var(--color-secondary);
+  }
+  .offer-card-footer {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-top: auto;
+  }
+  .offer-fine-print-link {
+    font-size: 0.75rem;
+    color: var(--color-muted);
+    text-decoration: underline;
+    text-align: center;
+    display: block;
+  }
+  
+  /* Protection Plan Two-Panel Banner */
+  .promo-banner {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    background-color: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+  }
+  .promo-left {
+    padding: 3.5rem 3rem;
+  }
+  .promo-right {
+    background-color: rgba(23, 74, 54, 0.03);
+    border-left: 1px solid var(--border-color);
+    padding: 3.5rem 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  
+  /* Referral Section */
+  .referral-container {
+    max-width: 900px;
+    margin: 0 auto;
+    background-color: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: 24px;
+    padding: 3.5rem 3rem;
+    box-shadow: var(--shadow-sm);
+  }
+  .referral-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+  }
+  .referral-form-cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  .referral-form-full {
+    grid-column: span 2;
+  }
+  
+  /* Commercial Page list tags */
+  .commercial-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+  }
+  .commercial-tag {
+    background-color: rgba(23, 74, 54, 0.05);
+    color: var(--color-primary);
+    padding: 0.4rem 1rem;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: capitalize;
+  }
+
+  /* How to Redeem Process */
+  .process-step-card {
+    text-align: center;
+    padding: 2rem 1.5rem;
+    background-color: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    height: 100%;
+  }
+  .process-step-num {
+    width: 36px;
+    height: 36px;
+    background-color: var(--color-primary);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    margin: 0 auto 1rem;
+  }
+
+  /* Responsive Adjustments */
+  @media (max-width: 991px) {
+    .promo-banner {
+      grid-template-columns: 1fr;
+    }
+    .promo-right {
+      border-left: none;
+      border-top: 1px solid var(--border-color);
+      padding: 3rem;
+    }
+    .referral-grid {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+  }
+  @media (max-width: 767px) {
+    .referral-container {
+      padding: 2.5rem 1.5rem;
+    }
+    .referral-form-cols {
+      grid-template-columns: 1fr;
+    }
+    .referral-form-full {
+      grid-column: span 1;
+    }
+    .promo-left {
+      padding: 2.5rem 1.5rem;
+    }
+    .promo-right {
+      padding: 2.5rem 1.5rem;
+    }
+  }
+
+  /* Mobile Sticky CTA Bar */
+  .mobile-sticky-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--bg-primary);
+    border-top: 1px solid var(--border-color);
+    box-shadow: 0 -4px 12px rgba(0,0,0,0.08);
+    display: none;
+    z-index: 999;
+    padding: 0.75rem 1rem;
+  }
+  .sticky-bar-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 0.75rem;
+  }
+  @media (max-width: 767px) {
+    .mobile-sticky-bar {
+      display: block;
+    }
+    /* Add padding to body bottom so content isn't covered */
+    body {
+      padding-bottom: 75px;
+    }
+  }
+  
+  /* Trust Video Container */
+  .video-card-wrapper {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-secondary);
+  }
+  .video-aspect {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16/9;
+  }
+</style>
+
+<!-- Hero Section -->
+<section class="specials-hero">
+  <div class="container specials-hero-container">
+    <span class="section-subtitle" style="display: block; margin-bottom: 0.5rem;">Limited-Time Offers</span>
+    <h1 style="margin-bottom: 1.25rem;">Pest Control Specials In Fort Lauderdale</h1>
+    <p class="text-muted" style="font-size: 1.2rem; line-height: 1.6; margin-bottom: 2rem;">Save on professional pest control, termite inspections, mosquito treatments, and year-round protection for South Florida homes and businesses.</p>
+    
+    <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+      <a href="#redeem-form" class="btn btn-primary" id="hero-redeem-btn" data-placement="specials-hero">Schedule Service</a>
+      <a href="tel:+19549455050" class="btn btn-secondary dni-phone" id="hero-call-btn" data-placement="specials-hero">Call Now</a>
+    </div>
+    
+    <div class="trust-tags">
+      <div class="trust-tag"><span class="trust-tag-dot"></span>Family-Owned</div>
+      <div class="trust-tag"><span class="trust-tag-dot"></span>Local South Florida Service</div>
+      <div class="trust-tag"><span class="trust-tag-dot"></span>Residential & Commercial</div>
+      <div class="trust-tag"><span class="trust-tag-dot"></span>Satisfaction-Focused Service</div>
+      <div class="trust-tag"><span class="trust-tag-dot"></span>Licensed & Insured</div>
+    </div>
+  </div>
+</section>
+
+<!-- Featured Specials Grid Section -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="text-center" style="max-width: 700px; margin: 0 auto 3rem;">
+      <span class="section-subtitle">Active Promotions</span>
+      <h2>Our Featured Specials</h2>
+      <p class="text-muted">Choose the offer that fits your property's needs and redeem it today for professional, eco-responsible pest defense.</p>
+    </div>
+    
+    <div class="grid grid-3 offer-grid">
+      <!-- Card 1: New Customer -->
+      <div class="offer-card">
+        <span class="offer-badge">Best Value</span>
+        <div class="offer-icon-wrapper">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+        </div>
+        <h3>New Customer Pest Control Special</h3>
+        <p>Get started with professional pest protection and save on your initial service.</p>
+        <div class="offer-meta">
+          <span class="offer-meta-icon">✓</span>
+          <span>Offer details to be confirmed</span>
+        </div>
+        <div class="offer-card-footer">
+          <a href="#redeem-form" class="btn btn-primary" id="new-customer-offer-btn" data-placement="specials-card">Redeem New Customer Offer</a>
+          <a href="#fine-print" class="offer-fine-print-link">View Terms</a>
+        </div>
+      </div>
+
+      <!-- Card 2: Free Termite Inspection -->
+      <div class="offer-card">
+        <span class="offer-badge">Termite Shield</span>
+        <div class="offer-icon-wrapper">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M10 3.5c-1-1-2.5-.5-3.5 0M14 3.5c1-1 2.5-.5 3.5 0" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" fill="none"/><ellipse cx="12" cy="6.5" rx="2" ry="2.2"/><ellipse cx="12" cy="11.5" rx="1.8" ry="2.5"/><ellipse cx="12" cy="17.5" rx="2.5" ry="3.5"/><path d="M10.2 10.5C8 9.5 7 10.5 6 11M10.2 12c-2.5 0-3.5 1-4.2 2M10.2 13.5C8 15 7.5 16 7 17.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" fill="none"/><path d="M13.8 10.5c2.2-1 3.2 0 4.2.5M13.8 12c2.5 0 3.5 1 4.2 2M13.8 13.5c2.2 1.5 2.7 2.5 3.2 4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" fill="none"/></svg>
+        </div>
+        <h3>Free Termite Inspection</h3>
+        <p>Schedule a termite inspection for your South Florida home and get expert recommendations before damage spreads.</p>
+        <div class="offer-meta">
+          <span class="offer-meta-icon">✓</span>
+          <span>Limited-time offer</span>
+        </div>
+        <div class="offer-card-footer">
+          <a href="#redeem-form" class="btn btn-primary" id="termite-inspection-offer-btn" data-placement="specials-card">Schedule Termite Inspection</a>
+          <a href="#fine-print" class="offer-fine-print-link">View Terms</a>
+        </div>
+      </div>
+
+      <!-- Card 3: Mosquito Control Seasonal Special -->
+      <div class="offer-card">
+        <span class="offer-badge">Yard Defense</span>
+        <div class="offer-icon-wrapper">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><line x1="12" y1="5.5" x2="12" y2="1.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><circle cx="12" cy="6.5" r="1.5"/><ellipse cx="12" cy="10.5" rx="1.8" ry="2.5"/><path d="M12 13v9" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><path d="M10.2 10C8.5 7.5 5.5 6.5 4 6.5c-1 0-1.5.5-1 1 1 1 4.5 3.5 7.2 3.5M13.8 10c1.7-2.5 4.7-3.5 6.2-3.5 1 0 1.5.5 1 1-1 1-4.5 3.5-7.2 3.5" fill="currentColor" stroke="currentColor" stroke-width="0.8"/><path d="M9.5 9.5C7.5 8 5.5 8 4 9.5M9.5 11.5c-2.5.5-4.5 2-5 4M10 13c-2 2-3 4-3.5 6" stroke="currentColor" stroke-width="1" stroke-linecap="round" fill="none"/><path d="M14.5 9.5C16.5 8 18.5 8 20 9.5M14.5 11.5c2.5.5 4.5 2 5 4M14 13c2 2 3 4 3.5 6" stroke="currentColor" stroke-width="1" stroke-linecap="round" fill="none"/></svg>
+        </div>
+        <h3>Mosquito Control Seasonal Special</h3>
+        <p>Take back your yard with seasonal mosquito control built for South Florida weather.</p>
+        <div class="offer-meta">
+          <span class="offer-meta-icon">✓</span>
+          <span>Call for current availability</span>
+        </div>
+        <div class="offer-card-footer">
+          <a href="#redeem-form" class="btn btn-primary" id="mosquito-special-btn" data-placement="specials-card">Claim Mosquito Special</a>
+          <a href="#fine-print" class="offer-fine-print-link">View Terms</a>
+        </div>
+      </div>
+
+      <!-- Card 4: Rodent Control Inspection Offer -->
+      <div class="offer-card">
+        <span class="offer-badge">Rodent Exclusion</span>
+        <div class="offer-icon-wrapper">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M4 19c2-2 1-5 2-7" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/><circle cx="11" cy="7" r="2.2"/><circle cx="15" cy="7" r="1.8"/><path d="M8 15.5c0-4 3.5-6 6.5-6s4 1.5 5.5 3c1.5 1.5 2.5 1.5 3 2 .5.5.5 1-.2 1.5-1.5 1-4.5 1.5-6.8 1.5-3 0-8-1.2-8-2.2z"/><path d="M22 13c1 .2 2 .8 2.5 1.2M22 14.5c1 0 2-.2 2.5-.5" stroke="currentColor" stroke-width="1" stroke-linecap="round" fill="none"/></svg>
+        </div>
+        <h3>Rodent Control Inspection Offer</h3>
+        <p>Get help identifying entry points, nesting areas, and prevention options before the problem grows.</p>
+        <div class="offer-meta">
+          <span class="offer-meta-icon">✓</span>
+          <span>Starting price / discount TBD</span>
+        </div>
+        <div class="offer-card-footer">
+          <a href="#redeem-form" class="btn btn-primary" id="rodent-inspection-offer-btn" data-placement="specials-card">Request Rodent Inspection</a>
+          <a href="#fine-print" class="offer-fine-print-link">View Terms</a>
+        </div>
+      </div>
+
+      <!-- Card 5: Commercial Pest Assessment -->
+      <div class="offer-card">
+        <span class="offer-badge">Business Shield</span>
+        <div class="offer-icon-wrapper">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+        </div>
+        <h3>Commercial Pest Control Assessment</h3>
+        <p>Protect your restaurant, office, rental property, HOA, warehouse, or managed property with a custom pest-control plan.</p>
+        <div class="offer-meta">
+          <span class="offer-meta-icon">✓</span>
+          <span>Limited-time offer</span>
+        </div>
+        <div class="offer-card-footer">
+          <a href="#redeem-form" class="btn btn-primary" id="commercial-assessment-btn" data-placement="specials-card">Request Commercial Assessment</a>
+          <a href="#fine-print" class="offer-fine-print-link">View Terms</a>
+        </div>
+      </div>
+
+      <!-- Card 6: Year-Round Home Protection Plan -->
+      <div class="offer-card">
+        <span class="offer-badge">Continuous Guard</span>
+        <div class="offer-icon-wrapper">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+        </div>
+        <h3>Year-Round Home Protection Plan</h3>
+        <p>Ask about recurring pest protection for ants, roaches, spiders, and common South Florida pests.</p>
+        <div class="offer-meta">
+          <span class="offer-meta-icon">✓</span>
+          <span>Starting price / discount TBD</span>
+        </div>
+        <div class="offer-card-footer">
+          <a href="#redeem-form" class="btn btn-primary" id="protection-plan-btn" data-placement="specials-card">Build My Protection Plan</a>
+          <a href="#fine-print" class="offer-fine-print-link">View Terms</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Protection Plan Promo Section -->
+<section class="section">
+  <div class="container">
+    <div class="promo-banner">
+      <div class="promo-left">
+        <span class="section-subtitle" style="display: block; margin-bottom: 0.5rem;">Maximum Savings & Protection</span>
+        <h2 style="margin-bottom: 1rem;">Save More With Year-Round Pest Protection</h2>
+        <p class="text-muted" style="margin-bottom: 2rem; line-height: 1.6;">Because South Florida's warm, subtropical climate supports pest reproduction twelve months a year, one-time spraying doesn't solve the core issue. An active, recurring exterior barrier stops bugs before they enter. Our year-round protection program delivers the highest long-term savings and peace of mind.</p>
+        
+        <div class="grid grid-2" style="gap: 1.25rem 2rem;">
+          <div style="display: flex; gap: 0.75rem; align-items: flex-start;">
+            <div style="color: var(--color-secondary); font-weight: bold; font-size: 1.2rem;">✓</div>
+            <div><strong>Active Exterior Barrier:</strong> Blocks ants, roaches, and spiders outside.</div>
+          </div>
+          <div style="display: flex; gap: 0.75rem; align-items: flex-start;">
+            <div style="color: var(--color-secondary); font-weight: bold; font-size: 1.2rem;">✓</div>
+            <div><strong>Interior Service Included:</strong> Treated on request at no additional charge.</div>
+          </div>
+          <div style="display: flex; gap: 0.75rem; align-items: flex-start;">
+            <div style="color: var(--color-secondary); font-weight: bold; font-size: 1.2rem;">✓</div>
+            <div><strong>Termite Inspection Add-on:</strong> Protects structural wood perimeter.</div>
+          </div>
+          <div style="display: flex; gap: 0.75rem; align-items: flex-start;">
+            <div style="color: var(--color-secondary); font-weight: bold; font-size: 1.2rem;">✓</div>
+            <div><strong>Rodent & Mosquito Monitoring:</strong> Optional targeted upgrades.</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="promo-right">
+        <h3 style="margin-bottom: 1rem; color: var(--color-primary);">Quarterly Home Protection</h3>
+        <p style="font-size: 0.95rem; color: var(--color-muted); margin-bottom: 1.5rem;">Get continuous protection against crawling insects, backed by free callback guarantees.</p>
+        <a href="#redeem-form" class="btn btn-primary" id="protection-plan-promo-btn" data-placement="specials-promo" style="width: 100%;">Ask About Protection Plans</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Referral Program Section -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="referral-container">
+      <div class="referral-grid">
+        <div>
+          <span class="section-subtitle" style="display: block; margin-bottom: 0.5rem;">Share the Protection</span>
+          <h2 style="margin-bottom: 1.25rem;">Refer A Neighbor. Save On Service.</h2>
+          <p class="text-muted" style="line-height: 1.6; margin-bottom: 1.5rem;">If a friend, neighbor, family member, or co-worker signs up for service with Florida Pest Control Center, you may qualify for savings on your next scheduled visit. Help your neighborhood stay pest-free!</p>
+          
+          <div style="background-color: var(--bg-secondary); border-radius: 12px; padding: 1.25rem; border: 1px solid var(--border-color); display: flex; gap: 1rem; align-items: flex-start; margin-top: 2rem;">
+            <div style="font-size: 1.5rem; color: var(--color-secondary);">ℹ</div>
+            <div style="font-size: 0.88rem; line-height: 1.5; color: var(--color-muted);">
+              <strong>How it works:</strong> Fill out the form with your referral's details. Once their service is scheduled and performed, we will credit your account as our thank you!
+            </div>
+          </div>
+        </div>
+        
+        <div>
+          <form id="referral-form" data-placement="specials-referral" style="display: flex; flex-direction: column; gap: 1rem;">
+            <input type="hidden" name="form_name" value="specials_referral_program">
+            
+            <div class="referral-form-cols">
+              <div class="form-group">
+                <label for="ref-your-name" class="form-label">Your Name</label>
+                <input type="text" id="ref-your-name" name="referrer_name" class="form-input" placeholder="Your full name" required>
+              </div>
+              <div class="form-group">
+                <label for="ref-your-contact" class="form-label">Your Phone/Email</label>
+                <input type="text" id="ref-your-contact" name="referrer_contact" class="form-input" placeholder="Phone or email" required>
+              </div>
+            </div>
+
+            <div class="referral-form-cols" style="border-top: 1px solid var(--border-color); padding-top: 1rem; margin-top: 0.5rem;">
+              <div class="form-group">
+                <label for="ref-their-name" class="form-label">Referral's Name</label>
+                <input type="text" id="ref-their-name" name="referral_name" class="form-input" placeholder="Their full name" required>
+              </div>
+              <div class="form-group">
+                <label for="ref-their-contact" class="form-label">Referral's Contact</label>
+                <input type="text" id="ref-their-contact" name="referral_contact" class="form-input" placeholder="Phone or email" required>
+              </div>
+            </div>
+
+            <div class="referral-form-cols">
+              <div class="form-group">
+                <label for="ref-their-city" class="form-label">Referral's City</label>
+                <input type="text" id="ref-their-city" name="referral_city" class="form-input" placeholder="e.g. Fort Lauderdale" required>
+              </div>
+              <div class="form-group">
+                <label for="ref-pest-issue" class="form-label">Pest Issue (if known)</label>
+                <select id="ref-pest-issue" name="pest_issue" class="form-input">
+                  <option value="unknown" selected>Unknown / General</option>
+                  <option value="ants">Ants</option>
+                  <option value="termites">Termites</option>
+                  <option value="rodents">Rodents / Rats</option>
+                  <option value="mosquitoes">Mosquitoes</option>
+                  <option value="roaches">Cockroaches</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group referral-form-full" style="display: flex; gap: 0.5rem; align-items: flex-start; margin-top: 0.5rem;">
+              <input type="checkbox" id="ref-consent" name="consent" style="margin-top: 3px;" required>
+              <label for="ref-consent" style="font-size: 0.8rem; line-height: 1.4; color: var(--color-muted);">I confirm that I have spoken with this person and they consent to being contacted by Florida Pest Control Center.</label>
+            </div>
+
+            <button type="submit" class="btn btn-primary" id="submit-referral-btn" style="width: 100%; margin-top: 0.5rem;">Submit Referral</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Pest-Specific Offer Pathways Section -->
+<section class="section">
+  <div class="container">
+    <div class="text-center" style="max-width: 600px; margin: 0 auto 3rem;">
+      <span class="section-subtitle">Targeted Solutions</span>
+      <h2>What Pest Problem Are You Trying To Solve?</h2>
+      <p class="text-muted">Click a category below to explore specialized treatments, signs, and custom estimates for specific South Florida pests.</p>
+    </div>
+    
+    <div class="grid grid-4" style="gap: 1.5rem;">
+      <a href="/termite-control/" class="card" id="pest-pathway-termite" style="padding: 1.5rem; text-align: center; border-radius: 16px; box-shadow: var(--shadow-sm); display: block; text-decoration: none; transition: transform 0.2s ease;">
+        <strong style="display: block; font-size: 1.1rem; color: var(--color-primary); margin-bottom: 0.5rem;">Termites</strong>
+        <span style="font-size: 0.85rem; color: var(--color-secondary); font-weight: 700;">Schedule Inspection →</span>
+      </a>
+      <a href="/cockroach-control/" class="card" id="pest-pathway-roach" style="padding: 1.5rem; text-align: center; border-radius: 16px; box-shadow: var(--shadow-sm); display: block; text-decoration: none; transition: transform 0.2s ease;">
+        <strong style="display: block; font-size: 1.1rem; color: var(--color-primary); margin-bottom: 0.5rem;">Roaches</strong>
+        <span style="font-size: 0.85rem; color: var(--color-secondary); font-weight: 700;">Get Help Today →</span>
+      </a>
+      <a href="/rodent-control/" class="card" id="pest-pathway-rodent" style="padding: 1.5rem; text-align: center; border-radius: 16px; box-shadow: var(--shadow-sm); display: block; text-decoration: none; transition: transform 0.2s ease;">
+        <strong style="display: block; font-size: 1.1rem; color: var(--color-primary); margin-bottom: 0.5rem;">Rodents</strong>
+        <span style="font-size: 0.85rem; color: var(--color-secondary); font-weight: 700;">Schedule Inspection →</span>
+      </a>
+      <a href="/mosquito-control/" class="card" id="pest-pathway-mosquito" style="padding: 1.5rem; text-align: center; border-radius: 16px; box-shadow: var(--shadow-sm); display: block; text-decoration: none; transition: transform 0.2s ease;">
+        <strong style="display: block; font-size: 1.1rem; color: var(--color-primary); margin-bottom: 0.5rem;">Mosquitoes</strong>
+        <span style="font-size: 0.85rem; color: var(--color-secondary); font-weight: 700;">Claim Special →</span>
+      </a>
+      <a href="/ant-control/" class="card" id="pest-pathway-ant" style="padding: 1.5rem; text-align: center; border-radius: 16px; box-shadow: var(--shadow-sm); display: block; text-decoration: none; transition: transform 0.2s ease;">
+        <strong style="display: block; font-size: 1.1rem; color: var(--color-primary); margin-bottom: 0.5rem;">Ants</strong>
+        <span style="font-size: 0.85rem; color: var(--color-secondary); font-weight: 700;">Get Help Today →</span>
+      </a>
+      <a href="/bed-bug-control/" class="card" id="pest-pathway-bedbug" style="padding: 1.5rem; text-align: center; border-radius: 16px; box-shadow: var(--shadow-sm); display: block; text-decoration: none; transition: transform 0.2s ease;">
+        <strong style="display: block; font-size: 1.1rem; color: var(--color-primary); margin-bottom: 0.5rem;">Bed Bugs</strong>
+        <span style="font-size: 0.85rem; color: var(--color-secondary); font-weight: 700;">Get Help Today →</span>
+      </a>
+      <a href="/pigeon-bird-control/" class="card" id="pest-pathway-bird" style="padding: 1.5rem; text-align: center; border-radius: 16px; box-shadow: var(--shadow-sm); display: block; text-decoration: none; transition: transform 0.2s ease;">
+        <strong style="display: block; font-size: 1.1rem; color: var(--color-primary); margin-bottom: 0.5rem;">Birds / Pigeons</strong>
+        <span style="font-size: 0.85rem; color: var(--color-secondary); font-weight: 700;">Schedule Inspection →</span>
+      </a>
+      <a href="/commercial-pest-control/" class="card" id="pest-pathway-commercial" style="padding: 1.5rem; text-align: center; border-radius: 16px; box-shadow: var(--shadow-sm); display: block; text-decoration: none; transition: transform 0.2s ease;">
+        <strong style="display: block; font-size: 1.1rem; color: var(--color-primary); margin-bottom: 0.5rem;">Commercial</strong>
+        <span style="font-size: 0.85rem; color: var(--color-secondary); font-weight: 700;">Get Quote →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Commercial Specials Section -->
+<section class="section section-alt">
+  <div class="container grid grid-2" style="align-items: center; gap: 4rem;">
+    <div>
+      <span class="section-subtitle">Commercial Enterprise</span>
+      <h2>Special Offers For South Florida Businesses</h2>
+      <p class="text-muted" style="margin-bottom: 1.5rem; line-height: 1.6;">Commercial pest control requires consistency, documentation, and discreet service. Ask about custom plans for South Florida businesses and managed properties. We work around your operational schedule to ensure minimal disruptions.</p>
+      
+      <div class="commercial-tags">
+        <span class="commercial-tag">restaurants</span>
+        <span class="commercial-tag">retail plazas</span>
+        <span class="commercial-tag">property managers</span>
+        <span class="commercial-tag">HOAs</span>
+        <span class="commercial-tag">offices</span>
+        <span class="commercial-tag">warehouses</span>
+        <span class="commercial-tag">apartment communities</span>
+        <span class="commercial-tag">vacation rentals</span>
+      </div>
+      
+      <a href="#redeem-form" class="btn btn-primary" id="commercial-assessment-btn-2" data-placement="specials-commercial">Request Commercial Pest Assessment</a>
+    </div>
+    
+    <div style="position: relative;">
+      <div style="background-color: var(--color-primary); border-radius: 24px; position: absolute; top: -15px; right: -15px; width: 100%; height: 100%; z-index: 0; opacity: 0.05;"></div>
+      <img src="/images/commercial.png" alt="Florida Pest Control Center commercial client and technicians at retail plaza" style="width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 24px; box-shadow: var(--shadow-md); position: relative; z-index: 1;">
+    </div>
+  </div>
+</section>
+
+<!-- How To Redeem Section -->
+<section class="section">
+  <div class="container">
+    <div class="text-center" style="max-width: 600px; margin: 0 auto 3rem;">
+      <span class="section-subtitle">Simple Procedure</span>
+      <h2>How To Redeem Your Special</h2>
+      <p class="text-muted">Getting your discount is quick and straightforward. Follow these steps to book your service.</p>
+    </div>
+    
+    <div class="grid grid-5" style="gap: 1.25rem;">
+      <div>
+        <div class="process-step-card">
+          <div class="process-step-num">1</div>
+          <strong style="display: block; margin-bottom: 0.5rem; color: var(--color-primary);">Choose Offer</strong>
+          <p style="font-size: 0.85rem; color: var(--color-muted); margin: 0; line-height: 1.4;">Pick the active promotion above that best suits your needs.</p>
+        </div>
+      </div>
+      <div>
+        <div class="process-step-card">
+          <div class="process-step-num">2</div>
+          <strong style="display: block; margin-bottom: 0.5rem; color: var(--color-primary);">Contact Team</strong>
+          <p style="font-size: 0.85rem; color: var(--color-muted); margin: 0; line-height: 1.4;">Call us directly or submit our quick online form.</p>
+        </div>
+      </div>
+      <div>
+        <div class="process-step-card">
+          <div class="process-step-num">3</div>
+          <strong style="display: block; margin-bottom: 0.5rem; color: var(--color-primary);">Mention Promo</strong>
+          <p style="font-size: 0.85rem; color: var(--color-muted); margin: 0; line-height: 1.4;">Mention the special to our dispatcher or technician before service.</p>
+        </div>
+      </div>
+      <div>
+        <div class="process-step-card">
+          <div class="process-step-num">4</div>
+          <strong style="display: block; margin-bottom: 0.5rem; color: var(--color-primary);">Schedule</strong>
+          <p style="font-size: 0.85rem; color: var(--color-muted); margin: 0; line-height: 1.4;">Book your visual inspection or targeted pest treatment.</p>
+        </div>
+      </div>
+      <div>
+        <div class="process-step-card">
+          <div class="process-step-num">5</div>
+          <strong style="display: block; margin-bottom: 0.5rem; color: var(--color-primary);">Get Protected</strong>
+          <p style="font-size: 0.85rem; color: var(--color-muted); margin: 0; line-height: 1.4;">Receive licensed protection and enjoy a pest-free space.</p>
+        </div>
+      </div>
+    </div>
+    
+    <div style="text-align: center; margin-top: 3rem;">
+      <a href="#redeem-form" class="btn btn-primary" id="redeem-special-howto-btn" data-placement="specials-howto">Redeem A Special</a>
+    </div>
+  </div>
+</section>
+
+<!-- Optional FAQ Section -->
+<section class="section section-alt">
+  <div class="container" style="max-width: 800px;">
+    <div class="text-center" style="margin-bottom: 3rem;">
+      <span class="section-subtitle">FAQ</span>
+      <h2>Specials & Offers Frequently Asked Questions</h2>
+      <p class="text-muted">Common questions about redeeming discounts and pest protection packages.</p>
+    </div>
+    
+    <div style="display: flex; flex-direction: column; gap: 1rem;">
+      <details class="faq-details" style="background: var(--bg-primary); border: 1px solid var(--border-color); border-radius: 12px; padding: 1.25rem;">
+        <summary style="font-weight: 700; color: var(--color-primary); cursor: pointer; outline: none;">Do pest control specials apply to new customers?</summary>
+        <p style="margin-top: 0.75rem; font-size: 0.95rem; color: var(--color-muted); line-height: 1.5;">Yes! We provide targeted initial service discounts to help new residential and commercial clients establish active barriers. Call our team to confirm current introductory specials for your area.</p>
+      </details>
+      
+      <details class="faq-details" style="background: var(--bg-primary); border: 1px solid var(--border-color); border-radius: 12px; padding: 1.25rem;">
+        <summary style="font-weight: 700; color: var(--color-primary); cursor: pointer; outline: none;">Can I combine pest control offers?</summary>
+        <p style="margin-top: 0.75rem; font-size: 0.95rem; color: var(--color-muted); line-height: 1.5;">Generally, promotional offers and initial service specials cannot be combined with other active discounts or coupons. Please review the fine print or consult our team during scheduling.</p>
+      </details>
+
+      <details class="faq-details" style="background: var(--bg-primary); border: 1px solid var(--border-color); border-radius: 12px; padding: 1.25rem;">
+        <summary style="font-weight: 700; color: var(--color-primary); cursor: pointer; outline: none;">Do you offer termite inspection specials?</summary>
+        <p style="margin-top: 0.75rem; font-size: 0.95rem; color: var(--color-muted); line-height: 1.5;">Yes, we offer free initial visual termite assessments for qualifying South Florida homeowners. This allows us to inspect perimeter crawlspaces and foundations before proposing target barrier systems.</p>
+      </details>
+
+      <details class="faq-details" style="background: var(--bg-primary); border: 1px solid var(--border-color); border-radius: 12px; padding: 1.25rem;">
+        <summary style="font-weight: 700; color: var(--color-primary); cursor: pointer; outline: none;">Are there mosquito control specials in South Florida?</summary>
+        <p style="margin-top: 0.75rem; font-size: 0.95rem; color: var(--color-muted); line-height: 1.5;">Yes! We offer seasonal mosquito control specials to suppress yard breeding cycles during wet months. Contact us to learn about monthly packages and one-time event spraying specials.</p>
+      </details>
+
+      <details class="faq-details" style="background: var(--bg-primary); border: 1px solid var(--border-color); border-radius: 12px; padding: 1.25rem;">
+        <summary style="font-weight: 700; color: var(--color-primary); cursor: pointer; outline: none;">Do you offer commercial pest control discounts?</summary>
+        <p style="margin-top: 0.75rem; font-size: 0.95rem; color: var(--color-muted); line-height: 1.5;">Yes, we customize commercial pest management assessments for restaurants, warehouses, HOAs, and managed properties, incorporating specialized initial onboarding discounts.</p>
+      </details>
+
+      <details class="faq-details" style="background: var(--bg-primary); border: 1px solid var(--border-color); border-radius: 12px; padding: 1.25rem;">
+        <summary style="font-weight: 700; color: var(--color-primary); cursor: pointer; outline: none;">How do I redeem a special?</summary>
+        <p style="margin-top: 0.75rem; font-size: 0.95rem; color: var(--color-muted); line-height: 1.5;">Simply select your preferred offer, call our Fort Lauderdale office, or request service online through our Specials page form. Mention the offer during your call or initial consultation before scheduling.</p>
+      </details>
+
+      <details class="faq-details" style="background: var(--bg-primary); border: 1px solid var(--border-color); border-radius: 12px; padding: 1.25rem;">
+        <summary style="font-weight: 700; color: var(--color-primary); cursor: pointer; outline: none;">Are specials available outside Fort Lauderdale?</summary>
+        <p style="margin-top: 0.75rem; font-size: 0.95rem; color: var(--color-muted); line-height: 1.5;">Our service specials apply to all qualifying Broward County and South Florida service areas, including Plantation, Weston, Hollywood, Davie, Pembroke Pines, and Dania Beach. Call us to confirm coverage for your zip code.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- Fine Print / Disclaimer Section -->
+<section class="section" id="fine-print" style="padding: 3rem 0; border-bottom: 1px solid var(--border-color);">
+  <div class="container" style="max-width: 800px; text-align: left;">
+    <h4 style="margin-bottom: 1rem; color: var(--color-primary);">Specials & Promotions Fine Print</h4>
+    <ul style="font-size: 0.82rem; line-height: 1.6; color: var(--color-muted); padding-left: 1.25rem; display: flex; flex-direction: column; gap: 0.5rem;">
+      <li>Offers may not be combined with other discounts or active promotions.</li>
+      <li>Specials must be mentioned before service is scheduled or performed.</li>
+      <li>New customer offers may be limited to first-time residential or commercial accounts only.</li>
+      <li>Some offers may apply only to qualifying annual or recurring service programs.</li>
+      <li>Specialty pest treatments (such as termites, bed bugs, and bird exclusion) require a visual inspection before treatment estimates are finalized.</li>
+      <li>Offer availability and dispatcher scheduling may vary by service area zip code.</li>
+      <li>Final service pricing depends on inspection findings, target pest issue, property size, and specific structural treatment needs.</li>
+      <li>All discount amounts, expiration dates, and fine-print specifics are managed as CMS-editable parameters.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- Trust Section (Relocated Proof Content) -->
+<section class="section section-alt">
+  <div class="container grid grid-2" style="align-items: center; gap: 4rem;">
+    <div>
+      <span class="section-subtitle">Verified Local Proof</span>
+      <h2>Why Homeowners Choose Florida Pest Control Center</h2>
+      <p class="text-muted" style="margin-bottom: 2rem; line-height: 1.6;">We are a family-owned, independent company serving Fort Lauderdale and South Florida. Unlike national corporations, our local technicians live in your neighborhood and focus on customer satisfaction instead of hard sales scripts. We are proud to maintain a <strong>rated 5 stars across 44+ reviews</strong> credential from genuine local property owners.</p>
+      
+      <!-- Badges Row -->
+      <div style="display: flex; gap: 1.25rem; align-items: center; margin-bottom: 2rem; flex-wrap: wrap;">
+        <span style="font-size: 0.8rem; font-weight: 700; text-transform: uppercase; color: var(--color-muted); display: block; width: 100%;">Top-Rated Across Platforms:</span>
+        <div style="background-color: var(--bg-primary); padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid var(--border-color); font-weight: bold; font-size: 0.85rem; color: var(--color-primary);">Google 5.0 ★</div>
+        <div style="background-color: var(--bg-primary); padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid var(--border-color); font-weight: bold; font-size: 0.85rem; color: var(--color-primary);">Yelp Top Rated</div>
+        <div style="background-color: var(--bg-primary); padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid var(--border-color); font-weight: bold; font-size: 0.85rem; color: var(--color-primary);">NPMA Member</div>
+      </div>
+      
+      <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+        <a href="#reviews-widget" class="btn btn-secondary" id="scroll-to-reviews-btn" data-placement="specials-trust">Read Reviews</a>
+        <a href="#redeem-form" class="btn btn-primary" id="trust-schedule-btn" data-placement="specials-trust">Schedule Service</a>
+      </div>
+    </div>
+    
+    <div>
+      <!-- YouTube Video Testimonial rounded card -->
+      <div class="video-card-wrapper">
+        <div class="video-aspect">
+          <iframe src="https://www.youtube.com/embed/zuFI_vt6Atc?rel=0&amp;controls=1&amp;autoplay=0&amp;mute=0&amp;start=0" frameBorder="0" style="position:absolute;left:0;top:0;width:100%;height:100%;pointer-events:auto" allow="autoplay; encrypted-media" allowfullscreen="" title="Florida Pest Control Center Plantation Great 5 Star Review by Robin Q."></iframe>
+        </div>
+        <div style="padding: 1.25rem; font-size: 0.88rem; font-weight: 600; color: var(--color-primary); background-color: var(--bg-primary); text-align: center; border-top: 1px solid var(--border-color);">
+          "Quick and professional termite treatment." — Robin Q., Plantation, FL
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Review Widget Container -->
+<section class="section" id="reviews-widget" style="padding: 3rem 0; border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);">
+  <div class="container">
+    <div class="text-center" style="max-width: 600px; margin: 0 auto 2.5rem;">
+      <span class="section-subtitle">Real-Time Feedback</span>
+      <h3>Customer Testimonial Feed</h3>
+    </div>
+    
+    <!-- Live LeadConnector reviews widget embed -->
+    <div style="min-height: 400px; background-color: var(--bg-secondary); border-radius: 16px; padding: 1rem; border: 1px solid var(--border-color);">
+      <iframe class='lc_reviews_widget' src='https://services.leadconnectorhq.com/reputation/widgets/review_widget/HPt8hnYHwUy4lmdcbKb6' frameborder='0' scrolling='no' style='min-width: 100%;width: 100%; height: 600px;'></iframe>
+      <script type='text/javascript' src='https://reputationhub.site/reputation/assets/review-widget.js'></script>
+    </div>
+  </div>
+</section>
+
+<!-- Lead Capture Section (Redeem Form) -->
+<section class="section" id="redeem-form">
+  <div class="container grid grid-2" style="align-items: center; gap: 4rem;">
+    <div>
+      <span class="section-subtitle">Redeem Offer</span>
+      <h2>Ready To Save On Pest Control?</h2>
+      <p style="color: var(--color-muted); font-size: 1.1rem; margin-bottom: 2rem;">Select your desired special below and fill out the form. A local technician will contact you to confirm details and schedule your inspection.</p>
+      
+      <div style="display: flex; flex-direction: column; gap: 1.25rem;">
+        <div style="display: flex; gap: 0.75rem;">
+          <div style="width: 28px; height: 28px; border-radius: 50%; background-color: rgba(42, 124, 111, 0.08); color: var(--color-secondary); display: flex; align-items: center; justify-content: center; font-weight: bold; flex-shrink: 0;">✓</div>
+          <div><strong>Mention Promo:</strong> The selected discount will be applied directly to your estimate.</div>
+        </div>
+        <div style="display: flex; gap: 0.75rem;">
+          <div style="width: 28px; height: 28px; border-radius: 50%; background-color: rgba(42, 124, 111, 0.08); color: var(--color-secondary); display: flex; align-items: center; justify-content: center; font-weight: bold; flex-shrink: 0;">✓</div>
+          <div><strong>Expert Diagnosis:</strong> Punctual, licensed technicians checking entry vectors.</div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="inline-form-card" style="box-shadow: var(--shadow-md);">
+      <h3>Claim Your Promotion</h3>
+      <p class="form-desc">Provide your contact details below to claim your selected special.</p>
+      
+      <form id="specials-redeem-form" data-placement="specials-page">
+        <input type="hidden" name="form_name" value="specials_page_redemption">
+        
+        <div class="form-group">
+          <label for="spec-name" class="form-label">Full Name</label>
+          <input type="text" id="spec-name" name="full_name" class="form-input" placeholder="e.g. John Miller" required autocomplete="name">
+        </div>
+        
+        <div class="form-group">
+          <label for="spec-phone" class="form-label">Phone Number</label>
+          <input type="tel" id="spec-phone" name="phone" class="form-input" placeholder="e.g. (954) 555-0100" required autocomplete="tel">
+        </div>
+
+        <div class="form-group">
+          <label for="spec-offer" class="form-label">Select Special</label>
+          <select id="spec-offer" name="pest_needed" class="form-input">
+            <option value="new-customer-special" selected>New Customer Pest Control Special</option>
+            <option value="free-termite-inspection">Free Termite Inspection</option>
+            <option value="mosquito-control-special">Mosquito Control Seasonal Special</option>
+            <option value="rodent-control-inspection">Rodent Control Inspection Offer</option>
+            <option value="commercial-pest-assessment">Commercial Pest Assessment Special</option>
+            <option value="year-round-protection-program">Year-Round Home Protection Plan</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="spec-zip" class="form-label">Zip Code</label>
+          <input type="text" id="spec-zip" name="zip" class="form-input" placeholder="e.g. 33312" required autocomplete="postal-code" inputmode="numeric" pattern="\d{5}">
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="width: 100%;" id="submit-specials-redeem">Schedule My Special</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- Final CTA Section -->
+<section class="section section-alt" style="padding: 4.5rem 0; text-align: center;">
+  <div class="container" style="max-width: 700px; margin: 0 auto;">
+    <h2 style="margin-bottom: 1rem;">Ready To Save On Pest Control?</h2>
+    <p class="text-muted" style="margin-bottom: 2.25rem; font-size: 1.1rem;">Choose a current special and schedule professional pest control for your South Florida home or business today.</p>
+    <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+      <a href="#redeem-form" class="btn btn-primary" id="redeem-special-final-btn" data-placement="specials-final">Redeem A Special</a>
+      <a href="tel:+19549455050" class="btn btn-secondary dni-phone" id="call-final-btn" data-placement="specials-final">Call Florida Pest Control Center</a>
+    </div>
+  </div>
+</section>
+
+<!-- Mobile Sticky CTA Bar -->
+<div class="mobile-sticky-bar">
+  <div class="sticky-bar-grid">
+    <a href="tel:+19549455050" class="btn btn-secondary sticky-cta-btn dni-phone" id="sticky-bar-call-btn" data-placement="sticky-bar">Call Now</a>
+    <a href="#redeem-form" class="btn btn-primary sticky-cta-btn" id="sticky-bar-redeem-btn" data-placement="sticky-bar">Redeem Offer</a>
+  </div>
+</div>

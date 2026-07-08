@@ -1,0 +1,98 @@
+<section class="section">
+  <div class="container text-center" style="max-width: 800px; margin-bottom: 4rem;">
+    <span class="section-subtitle">Real Customer Feedback</span>
+    <h1>Customer Reviews</h1>
+    <p class="text-muted" style="font-size: 1.15rem; line-height: 1.7;">At Florida Pest Control Center, we take pride in delivering honest, professional, and punctual pest protection. Here is what homeowners and property managers throughout South Florida say about their experience with our team.</p>
+
+    <!-- Google rating showcase card -->
+    <div class="card" style="display: inline-flex; align-items: center; gap: 2rem; padding: 2rem 3rem; margin-top: 2rem; border-color: var(--border-color); text-align: left;">
+      <div style="font-size: 3rem; font-weight: 800; color: var(--color-primary); font-family: var(--font-heading); line-height: 1;">4.1</div>
+      <div>
+        <div style="color: var(--color-accent); font-size: 1.5rem; letter-spacing: 2px;">★★★★★</div>
+        <span style="font-size: 0.95rem; font-weight: 600; color: var(--color-muted); display: block; margin-top: 0.25rem;">Based on 52 Verified Google Reviews</span>
+      </div>
+      <a href="https://www.google.com/search?q=Florida+Pest+Control+Center" target="_blank" rel="noopener" class="btn btn-secondary" style="margin-left: 1rem; min-height: 40px; padding: 0.5rem 1.5rem;">Review Us On Google</a>
+    </div>
+  </div>
+</section>
+
+<!-- Review Grid Section -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="grid grid-3">
+      {{#each reviews}}
+      <div class="card review-card" style="box-shadow: var(--shadow-sm);">
+        <div class="review-stars">
+          {{#times stars}}★{{/times}}
+        </div>
+        <div class="review-title">"{{title}}"</div>
+        <p class="review-text" style="font-size: 0.95rem;">{{text}}</p>
+        <div class="review-author">— {{author}}, {{location}}</div>
+      </div>
+      {{/each}}
+    </div>
+  </div>
+</section>
+
+<!-- Call to Action Section with Lead Capture -->
+<section class="section">
+  <div class="container grid grid-2" style="align-items: center; gap: 4rem;">
+    <div>
+      <span class="section-subtitle">Experience The Difference</span>
+      <h2>Ready For A Pest-Free Home?</h2>
+      <p style="font-size: 1.1rem; color: var(--color-muted); margin-bottom: 2rem;">Our technicians are punctual, courteous, and never pushy. Experience South Florida's trusted family-owned pest defense first-hand.</p>
+      
+      <div style="display: flex; flex-direction: column; gap: 1.25rem;">
+        <div style="display: flex; gap: 0.75rem;">
+          <div style="width: 28px; height: 28px; border-radius: 50%; background-color: rgba(42, 124, 111, 0.08); color: var(--color-secondary); display: flex; align-items: center; justify-content: center; font-weight: bold; flex-shrink: 0;">✓</div>
+          <div>
+            <strong>Free Visual Inspection:</strong> No obligation and no pressure to sign on the spot.
+          </div>
+        </div>
+        <div style="display: flex; gap: 0.75rem;">
+          <div style="width: 28px; height: 28px; border-radius: 50%; background-color: rgba(42, 124, 111, 0.08); color: var(--color-secondary); display: flex; align-items: center; justify-content: center; font-weight: bold; flex-shrink: 0;">✓</div>
+          <div>
+            <strong>Target Treatment Guarantee:</strong> If the bugs come back between quarters, we re-treat for free.
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="inline-form-card">
+      <h3>Request Free Inspection</h3>
+      <p class="form-desc">Complete the form below and a local technician will contact you to confirm a time.</p>
+      
+      <form id="reviews-page-form" data-placement="reviews-page">
+        <input type="hidden" name="form_name" value="reviews_page_inspection">
+        
+        <div class="form-group">
+          <label for="rev-name" class="form-label">Full Name</label>
+          <input type="text" id="rev-name" name="full_name" class="form-input" placeholder="e.g. John Miller" required autocomplete="name">
+        </div>
+        
+        <div class="form-group">
+          <label for="rev-phone" class="form-label">Phone Number</label>
+          <input type="tel" id="rev-phone" name="phone" class="form-input" placeholder="e.g. (954) 555-0100" required autocomplete="tel">
+        </div>
+
+        <div class="form-group">
+          <label for="rev-service" class="form-label">Service Needed</label>
+          <select id="rev-service" name="pest_needed" class="form-input">
+            <option value="general-pest-control" selected>General Pest Control Plan</option>
+            <option value="termite-control">Termite Inspection & Protection</option>
+            <option value="rodent-control">Rodent Exclusion</option>
+            <option value="mosquito-control">Mosquito Spraying</option>
+            <option value="commercial-pest-control">Commercial Assessment</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="rev-zip" class="form-label">Zip Code</label>
+          <input type="text" id="rev-zip" name="zip" class="form-input" placeholder="e.g. 33312" required autocomplete="postal-code" inputmode="numeric" pattern="\d{5}">
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="width: 100%;" id="submit-reviews-page">Request Inspection</button>
+      </form>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,60 @@
+{
+  "redirects": [
+    {
+      "from": "/reviews",
+      "to": "/specials/"
+    },
+    {
+      "from": "/reviews/",
+      "to": "/specials/"
+    },
+    {
+      "from": "/pest-control/ant-control",
+      "to": "/ant-control/"
+    },
+    {
+      "from": "/pest-control/mosquito-control",
+      "to": "/mosquito-control/"
+    },
+    {
+      "from": "/pest-control/termite-control",
+      "to": "/termite-control/"
+    },
+    {
+      "from": "/pest-control/rodent-control",
+      "to": "/rodent-control/"
+    },
+    {
+      "from": "/pest-control/cockroach-control",
+      "to": "/cockroach-control/"
+    },
+    {
+      "from": "/pest-control/bed-bug-control",
+      "to": "/bed-bug-control/"
+    },
+    {
+      "from": "/service-location/fort-lauderdale",
+      "to": "/pest-control-fort-lauderdale/"
+    },
+    {
+      "from": "/service-location/plantation",
+      "to": "/pest-control-plantation/"
+    },
+    {
+      "from": "/service-location/davie",
+      "to": "/pest-control-davie/"
+    },
+    {
+      "from": "/about/blog",
+      "to": "/blog/"
+    },
+    {
+      "from": "/general-pest-control",
+      "to": "/residential-pest-control/"
+    },
+    {
+      "from": "/general-pest-control/",
+      "to": "/residential-pest-control/"
+    }
+  ]
+}
