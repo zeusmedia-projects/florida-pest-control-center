@@ -3,7 +3,11 @@ document.addEventListener('DOMContentLoaded', () => {
   initFormValidation();
   initGtmTracking();
   initDni();
-  initDetailsFallback();
+  initDetailsAccordion();
+  initScrollReveal();
+  initStickyHeader();
+  initProcessTimeline();
+  initFloatingContactCard();
 });
 
 /**
@@ -195,31 +199,261 @@ function initDni() {
 }
 
 /**
- * Fallback for <details> exclusive accordions on older browsers
+ * Accordion Helper for FAQ section height transition
  */
-function initDetailsFallback() {
+class Accordion {
+  constructor(el) {
+    this.el = el;
+    this.summary = el.querySelector('summary');
+    this.content = el.querySelector('.disclosure-content');
+
+    this.animation = null;
+    this.isClosing = false;
+    this.isExpanding = false;
+    
+    this.summary.addEventListener('click', (e) => this.onClick(e));
+  }
+
+  onClick(e) {
+    e.preventDefault();
+    this.el.style.overflow = 'hidden';
+    if (this.isClosing || !this.el.open) {
+      this.open();
+    } else if (this.isExpanding || this.el.open) {
+      this.shrink();
+    }
+  }
+
+  shrink() {
+    this.isClosing = true;
+    const startHeight = `${this.el.offsetHeight}px`;
+    const endHeight = `${this.summary.offsetHeight}px`;
+
+    if (this.animation) {
+      this.animation.cancel();
+    }
+
+    this.animation = this.el.animate({
+      height: [startHeight, endHeight]
+    }, {
+      duration: 250,
+      easing: 'cubic-bezier(0.22, 1, 0.36, 1)'
+    });
+
+    this.animation.onfinish = () => this.onAnimationFinish(false);
+    this.animation.oncancel = () => this.isClosing = false;
+  }
+
+  open() {
+    this.el.style.height = `${this.el.offsetHeight}px`;
+    this.el.open = true;
+    window.requestAnimationFrame(() => this.expand());
+  }
+
+  expand() {
+    this.isExpanding = true;
+    const startHeight = `${this.el.offsetHeight}px`;
+    const endHeight = `${this.summary.offsetHeight + this.content.offsetHeight}px`;
+
+    if (this.animation) {
+      this.animation.cancel();
+    }
+
+    this.animation = this.el.animate({
+      height: [startHeight, endHeight]
+    }, {
+      duration: 250,
+      easing: 'cubic-bezier(0.22, 1, 0.36, 1)'
+    });
+
+    this.animation.onfinish = () => this.onAnimationFinish(true);
+    this.animation.oncancel = () => this.isExpanding = false;
+  }
+
+  onAnimationFinish(open) {
+    this.el.open = open;
+    this.animation = null;
+    this.isClosing = false;
+    this.isExpanding = false;
+    this.el.style.height = '';
+    this.el.style.overflow = '';
+  }
+}
+
+function initDetailsAccordion() {
   const detailsList = document.querySelectorAll('details.disclosure');
   if (detailsList.length === 0) return;
 
-  // Native 'name' support check on details
+  // Exclusive accordion behavior using details 'name' support/fallback
   const supportsNameAttribute = 'name' in HTMLDetailsElement.prototype;
 
-  if (!supportsNameAttribute) {
-    console.log('[Accordion Fallback active]: Browser does not support native details name attribute. Injecting JS exclusive toggle.');
-    detailsList.forEach(details => {
-      details.addEventListener('toggle', (e) => {
-        if (details.open) {
-          const groupName = details.getAttribute('name');
-          if (!groupName) return;
-          
-          detailsList.forEach(otherDetails => {
-            if (otherDetails !== details && otherDetails.getAttribute('name') === groupName) {
-              otherDetails.open = false;
-            }
-          });
-        }
-      });
+  detailsList.forEach(details => {
+    new Accordion(details);
+
+    // Exclusive toggle logic
+    details.addEventListener('toggle', (e) => {
+      if (details.open) {
+        const groupName = details.getAttribute('name');
+        if (!groupName) return;
+        
+        detailsList.forEach(otherDetails => {
+          if (otherDetails !== details && otherDetails.getAttribute('name') === groupName && otherDetails.open) {
+            // Close other details with transition
+            const accordionInstance = otherDetails._accordion || new Accordion(otherDetails);
+            otherDetails._accordion = accordionInstance;
+            accordionInstance.shrink();
+          }
+        });
+      }
     });
+    details._accordion = details._accordion || new Accordion(details);
+  });
+}
+
+/**
+ * Scroll entry and reveal animations using IntersectionObserver
+ */
+function initScrollReveal() {
+  // Check if browser supports reduced motion preference
+  const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+  if (mediaQuery.matches) {
+    // Instantly reveal all elements
+    document.querySelectorAll('.reveal-on-scroll').forEach(el => {
+      el.classList.add('revealed');
+    });
+    return;
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('revealed');
+        observer.unobserve(entry.target); // Trigger once per page load
+      }
+    });
+  }, {
+    rootMargin: '0px 0px -8% 0px', // trigger slightly after entering viewport
+    threshold: 0.05
+  });
+
+  document.querySelectorAll('.reveal-on-scroll').forEach(el => {
+    observer.observe(el);
+  });
+}
+
+/**
+ * Sticky Header scrolled shadow and compact style
+ */
+function initStickyHeader() {
+  const header = document.querySelector('.header');
+  if (!header) return;
+
+  const handleScroll = () => {
+    if (window.scrollY > 40) {
+      header.classList.add('scrolled');
+    } else {
+      header.classList.remove('scrolled');
+    }
+  };
+
+  window.addEventListener('scroll', handleScroll);
+  handleScroll();
+}
+
+/**
+ * Process Timeline growing progress bar
+ */
+function initProcessTimeline() {
+  const container = document.querySelector('.process-grid-container');
+  const progressLine = document.querySelector('.process-timeline-progress');
+  const steps = document.querySelectorAll('.process-step');
+  if (!container || !progressLine || steps.length === 0) return;
+
+  const handleScroll = () => {
+    const rect = container.getBoundingClientRect();
+    const triggerStart = window.innerHeight * 0.85;
+    const triggerEnd = window.innerHeight * 0.15;
+    const totalHeight = rect.height;
+
+    // Calculate progression based on center view
+    const scrolledPx = triggerStart - rect.top;
+    const scrollRangePx = triggerStart - triggerEnd + totalHeight - window.innerHeight;
+
+    let percent = Math.max(0, Math.min(100, (scrolledPx / scrollRangePx) * 100));
+
+    const isDesktop = window.innerWidth >= 768;
+    if (isDesktop) {
+      progressLine.style.width = `${percent}%`;
+      progressLine.style.height = '100%';
+    } else {
+      progressLine.style.height = `${percent}%`;
+      progressLine.style.width = '100%';
+    }
+
+    steps.forEach((step, idx) => {
+      // 5 steps map to 0%, 20%, 40%, 60%, 80% progression points
+      const revealPercent = idx * 20;
+      if (percent >= revealPercent) {
+        step.classList.add('revealed');
+      } else {
+        step.classList.remove('revealed');
+      }
+    });
+  };
+
+  window.addEventListener('scroll', handleScroll);
+  window.addEventListener('resize', handleScroll);
+  handleScroll();
+}
+
+/**
+ * Desktop Floating Contact Card (lower-right panel)
+ */
+function initFloatingContactCard() {
+  const card = document.getElementById('desktop-floating-card');
+  const closeBtn = document.getElementById('close-floating-card');
+  const footer = document.querySelector('footer');
+  if (!card || !closeBtn) return;
+
+  if (sessionStorage.getItem('floating-card-dismissed') === 'true') {
+    return;
+  }
+
+  const checkVisibility = () => {
+    if (window.innerWidth < 768) {
+      card.classList.remove('visible');
+      return;
+    }
+
+    if (window.scrollY > 400) {
+      card.classList.add('visible');
+    } else {
+      card.classList.remove('visible');
+    }
+  };
+
+  closeBtn.addEventListener('click', () => {
+    card.classList.remove('visible');
+    sessionStorage.setItem('floating-card-dismissed', 'true');
+  });
+
+  window.addEventListener('scroll', checkVisibility);
+  window.addEventListener('resize', checkVisibility);
+  checkVisibility();
+
+  if (footer) {
+    const observer = new IntersectionObserver((entries) => {
+      const entry = entries[0];
+      if (entry.isIntersecting) {
+        card.classList.add('hidden-by-footer');
+      } else {
+        card.classList.remove('hidden-by-footer');
+      }
+    }, {
+      rootMargin: '0px 0px 50px 0px',
+      threshold: 0
+    });
+    observer.observe(footer);
   }
 }
 

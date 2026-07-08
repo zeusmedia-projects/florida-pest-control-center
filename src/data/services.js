@@ -104,7 +104,7 @@ module.exports = [
       },
       {
         question: "What does the Florida Home Protection Plan cover?",
-        answer: "Our plan covers common household crawling pests including ants, cockroaches, silverfish, spiders, and crickets. It includes free re-services if pests return between scheduled quarterly visits."
+        answer: "Our plan covers common household crawling pests including ants, cockroaches, silverfish, spiders, and crickets. Re-service support may be available on qualifying plans if pests return between scheduled quarterly visits."
       }
     ]
   },
@@ -144,11 +144,11 @@ module.exports = [
   },
   {
     slug: "cockroach-control",
-    name: "Cockroach Control",
-    title: "Professional Cockroach Control & Extermination in Fort Lauderdale",
+    name: "Roach Control",
+    title: "Professional Roach Control & Extermination in Fort Lauderdale",
     metaDescription: "Get rid of German and American cockroaches (palmetto bugs). Florida Pest Control Center offers fast, reliable roach extermination in South Florida.",
     icon: '<svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M11 4C9 2 6 2 4.5 2.5M13 4c2-2 5-2 6.5-1.5" stroke="currentColor" stroke-width="1" stroke-linecap="round" fill="none"/><ellipse cx="12" cy="5.5" rx="1.8" ry="1.5"/><ellipse cx="12" cy="8.5" rx="3" ry="2.2"/><path d="M9 10.5c0-1.5 1.5-2 3-2s3 .5 3 2v8c0 2-1.2 3.5-3 3.5s-3-1.5-3-3.5v-8z"/><path d="M10.5 22l-1.5 1.5M13.5 22l1.5 1.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><path d="M8.5 9c-1.5-1-3 0-3.5.5M8.5 12.5C6.5 12.5 5 13 4 14.5M8.5 16.5c-1.5 1-2 2.5-2.5 4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" fill="none"/><path d="M15.5 9c1.5-1 3 0 3.5.5M15.5 12.5c2 0 3.5.5 4.5 2M15.5 16.5c1.5 1 2 2.5 2.5 4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" fill="none"/></svg>',
-    h1: "Cockroach Control in Fort Lauderdale, FL",
+    h1: "Roach Control in Fort Lauderdale, FL",
     intro: "Cockroaches are resilient, fast-multiplying pests that carry bacteria and contaminate food. Our professional treatments target roaches at their nesting sites, eliminating existing infestations and preventing future invasions.",
     signs: [
       "Sightings of roaches scurrying under appliances, inside cabinets, or along baseboards.",

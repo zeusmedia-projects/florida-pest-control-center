@@ -10,8 +10,8 @@ module.exports = {
     zip: "33312",
     license: "[FL-PCO-MOCK9999]", // Mock License Number for Demo
     hours: "7:00 AM – 8:00 PM every day",
-    googleRating: "4.1",
-    googleReviewCount: "52",
+    googleRating: "[GOOGLE RATING — LIVE FEED PENDING]",
+    googleReviewCount: "[GOOGLE REVIEWS — LIVE FEED PENDING]",
     googleSearchUrl: "https://www.google.com/search?q=Florida+Pest+Control+Center",
     facebookUrl: "https://www.facebook.com/floridapestcontrolcenter/",
     twitterUrl: "https://twitter.com/FL_PestControl", // Placeholder/Mock if not active, or official
