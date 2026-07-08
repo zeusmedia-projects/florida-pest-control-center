@@ -363,13 +363,39 @@ services.forEach(service => {
 });
 
 // 4. Compile Service Areas Hub
+const serviceAreasFaqs = [
+  {
+    question: "Do you provide pest control outside Fort Lauderdale?",
+    answer: "Yes. Florida Pest Control Center serves Fort Lauderdale and nearby Broward County communities including Plantation, Davie, Hollywood, Pembroke Pines, Weston, Sunrise, Wilton Manors, Oakland Park, Dania Beach, and surrounding areas. Call to confirm availability for your address."
+  },
+  {
+    question: "Do you service both homes and businesses?",
+    answer: "Yes. We provide pest control for homes, condos, apartments, restaurants, offices, retail spaces, warehouses, HOAs, rental properties, and managed properties."
+  },
+  {
+    question: "What pests are common across Broward County?",
+    answer: "Common pest issues include termites, roaches, ants, mosquitoes, rodents, bed bugs, birds, and landscape pests. The right treatment depends on the property, the pest, and where activity is coming from."
+  },
+  {
+    question: "Can I schedule a free inspection in my city?",
+    answer: "In many cases, yes. Use the form or call Florida Pest Control Center to confirm inspection availability in your area."
+  },
+  {
+    question: "Are the location pages different from each other?",
+    answer: "Yes. Each city page should be written to reflect that community’s homes, property types, pest pressure, and nearby service needs. Avoid duplicate city-page copy."
+  }
+];
+
 const areasHubData = {
-  title: "Pest Control Service Areas | Broward County & Fort Lauderdale",
-  metaDescription: "We provide professional pest protection across Fort Lauderdale and surrounding Broward County cities, including Plantation, Davie, Weston, and Hollywood.",
+  title: "Pest Control Service Areas | Fort Lauderdale & Broward County",
+  metaDescription: "Florida Pest Control Center serves Fort Lauderdale and nearby Broward County cities with pest control for homes, businesses, HOAs, rental properties, and managed properties. Schedule local pest service today.",
   canonicalPath: "/service-areas/",
   locations: locations,
   isAreaPage: true,
-  schemaList: [getLocalBusinessSchema("Broward County")]
+  schemaList: [
+    getLocalBusinessSchema("Broward County"),
+    getFaqSchema(serviceAreasFaqs)
+  ]
 };
 renderPage('service-areas', areasHubData, path.join(distDir, 'service-areas', 'index.html'), [
   { name: "Service Areas", path: "/service-areas/" }

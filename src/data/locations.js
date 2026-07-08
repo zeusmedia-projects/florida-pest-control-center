@@ -5,6 +5,7 @@ module.exports = [
     title: "Pest Control & Extermination in Fort Lauderdale, FL",
     metaDescription: "Reliable pest control in Fort Lauderdale. We specialize in termite control, rodent exclusion, ant extermination, and residential protection across Fort Lauderdale neighborhoods.",
     h1: "Pest Control in Fort Lauderdale, FL",
+    cardDescription: "Local pest control for Fort Lauderdale homes, condos, restaurants, offices, and waterfront properties dealing with termites, roaches, rodents, mosquitoes, ants, and year-round South Florida pest pressure.",
     intro: "As a coastal city with active waterways like the New River and the Intracoastal Waterway, Fort Lauderdale experiences high humidity and year-round pest activity. From historic homes in Sailboat Bend to waterfront properties in Las Olas, residential and commercial structures face ongoing pressure from termites, rodents, and crawling insects that thrive in our subtropical climate.",
     commonPests: [
       { name: "Termites (Subterranean & Drywood)", link: "/termite-control/" },
@@ -48,6 +49,7 @@ module.exports = [
     title: "Pest Control & Termite Extermination in Plantation, FL",
     metaDescription: "Professional pest control in Plantation, FL. We treat termites, ants, mosquitoes, and lawn pests in Jacaranda, Plantation Acres, and surrounding neighborhoods.",
     h1: "Pest Control in Plantation, FL",
+    cardDescription: "Pest protection for Plantation neighborhoods with mature landscaping, shaded yards, older homes, and active termite, mosquito, roach, and rodent pressure throughout the year.",
     intro: "Known for its abundant green spaces, mature tree canopies, and lush landscaping, the City of Plantation provides an ideal habitat for outdoor pests. Subtropical insects, lawn pests, and tree-dwelling rodents often migrate from the thick foliage of neighborhood trees into nearby residential attics and living rooms.",
     commonPests: [
       { name: "Landscape Pests & Whiteflies", link: "/landscape-pest-control/" },
@@ -89,6 +91,7 @@ module.exports = [
     title: "Equestrian & Suburban Pest Control in Davie, FL",
     metaDescription: "Davie pest control specialists. We handle rodents, fire ants, mosquitoes, and termites in Forest Ridge, Shenandoah, and agricultural areas of Davie.",
     h1: "Pest Control in Davie, FL",
+    cardDescription: "Pest control for Davie homes, larger lots, equestrian properties, commercial spaces, and landscaped neighborhoods where rodents, ants, mosquitoes, termites, and exterior pests can spread quickly.",
     intro: "With its unique blend of suburban communities, agricultural land, and equestrian trails, Davie presents distinct pest challenges. The proximity to stables, parks, and open fields increases the risk of rodent activity, flea and tick infestations, and stinging insects like wasps and fire ants.",
     commonPests: [
       { name: "Rodents (Norway Rats & Mice)", link: "/rodent-control/" },
@@ -130,6 +133,7 @@ module.exports = [
     title: "Coastal Pest Control & Extermination in Hollywood, FL",
     metaDescription: "Waterfront and coastal pest control services in Hollywood, FL. We treat termites, roaches, bed bugs, and rodents in Emerald Hills, Hollywood Lakes, and beach areas.",
     h1: "Pest Control in Hollywood, FL",
+    cardDescription: "Pest control for Hollywood homes, apartments, rental properties, restaurants, and coastal neighborhoods where humidity, dense housing, and high activity create steady pest pressure.",
     intro: "Hollywood's combination of historical buildings, sandy coastal stretches, and dense residential zones creates a highly varied pest environment. Older structures in areas like Hollywood Lakes are historically susceptible to wood-destroying termites, while high-density rental units face heightened risks from bed bugs and cockroaches.",
     commonPests: [
       { name: "Drywood Termites", link: "/termite-control/" },
@@ -171,6 +175,7 @@ module.exports = [
     title: "Pest Control & Prevention in Pembroke Pines, FL",
     metaDescription: "Residential pest control in Pembroke Pines. We resolve ants, roaches, mosquitoes, and termite infestations in Silver Lakes, Grand Palms, and Chapel Trail.",
     h1: "Pest Control in Pembroke Pines, FL",
+    cardDescription: "Year-round pest protection for Pembroke Pines homeowners, HOAs, townhomes, rental properties, and businesses dealing with roaches, ants, termites, mosquitoes, rodents, and recurring pest activity.",
     intro: "As one of Broward County's largest master-planned residential communities, Pembroke Pines features extensive neighborhoods, community parks, and lakes. The large concentration of single-family homes, combined with neighborhood retention ponds, creates ideal breeding grounds for mosquitoes and crawling household pests.",
     commonPests: [
       { name: "Ghost Ants & Sugar Ants", link: "/ant-control/" },
@@ -212,6 +217,7 @@ module.exports = [
     title: "Eco-Friendly Pest Control in Weston, FL",
     metaDescription: "Weston pest control services. We offer termite inspections, mosquito sprays, and general pest control near the Everglades in Savanna and Windmill Ranch.",
     h1: "Pest Control in Weston, FL",
+    cardDescription: "Clean, prevention-focused pest control for Weston homes, gated communities, lakefront properties, HOAs, and family neighborhoods where termite, mosquito, ant, and rodent issues need proactive service.",
     intro: "Weston is a beautiful, master-planned city directly bordering the Florida Everglades. While this close proximity to the wetlands offers stunning scenery, it also exposes Weston homes to intense insect populations, massive mosquito hatches, and rodent pressure coming from the adjacent natural habitats.",
     commonPests: [
       { name: "Mosquitoes", link: "/mosquito-control/" },
@@ -253,6 +259,7 @@ module.exports = [
     title: "Pest Control & Commercial Extermination in Sunrise, FL",
     metaDescription: "Professional pest control in Sunrise, FL. Residential and commercial pest services near Sawgrass Mills, Welleby, and Springtree areas.",
     h1: "Pest Control in Sunrise, FL",
+    cardDescription: "Pest control for Sunrise homes, apartments, retail centers, offices, and commercial properties with service for roaches, ants, rodents, mosquitoes, termites, and recurring pest problems.",
     intro: "Sunrise features a dynamic mix of major commercial retail hubs, industrial districts, and established residential neighborhoods. Property owners here must stay vigilant against pests, as high-traffic commercial zones and residential areas near canals provide plenty of food and water sources for roaches, rodents, and ants.",
     commonPests: [
       { name: "Commercial Cockroach Control", link: "/cockroach-control/" },
@@ -271,9 +278,8 @@ module.exports = [
     nearbyCities: [
       { name: "Weston", link: "/pest-control-weston/" },
       { name: "Plantation", link: "/pest-control-plantation/" },
-      { name: "Sunrise", link: "/pest-control-sunrise/" } // Wait, Sunrise is self-linking, nearby should be Oakland Park/Lauderdale Lakes. Let's fix.
+      { name: "Oakland Park", link: "/pest-control-oakland-park/" }
     ],
-    // Let's replace Sunrise with Oakland Park in nearbyCities to prevent self-linking
     faqs: [
       {
         question: "Do you service commercial properties near the Sawgrass Mills area?",
@@ -285,7 +291,7 @@ module.exports = [
       },
       {
         question: "What is your approach to commercial bird control in Sunrise?",
-        answer: "We install bird netting, spikes, and tension wires on commercial structures and shopping plazas to humanely prevent pigeons from nesting and damaging building facades."
+        answer: "We install bird netting, spikes, and tension wires on commercial structures and shopping plazas to humanely prevent pigeons from nesting and damaging bird nesting platforms."
       }
     ]
   },
@@ -295,6 +301,7 @@ module.exports = [
     title: "Urban Pest Control Services in Wilton Manors, FL",
     metaDescription: "Reliable pest control in Wilton Manors, FL. We specialize in termite warranties, mosquito control, and home pest protection in Coral Gardens and Jenada Isles.",
     h1: "Pest Control in Wilton Manors, FL",
+    cardDescription: "Local pest protection for Wilton Manors homes, townhomes, rental properties, restaurants, and small businesses where dense neighborhoods and tropical landscaping can invite year-round pest activity.",
     intro: "Entirely surrounded by the forks of the Middle River, Wilton Manors is an 'island city' characterized by waterfront homes, dense residential properties, and active commercial streets. The city's extensive shoreline and mature landscape canopies contribute to local termite activity and persistent mosquito issues.",
     commonPests: [
       { name: "Drywood & Formosan Termites", link: "/termite-control/" },
@@ -312,7 +319,7 @@ module.exports = [
     nearbyCities: [
       { name: "Fort Lauderdale", link: "/pest-control-fort-lauderdale/" },
       { name: "Oakland Park", link: "/pest-control-oakland-park/" },
-      { name: "Wilton Manors", link: "/pest-control-wilton-manors/" } // Self-link check. Let's fix nearby to Dania Beach instead of self.
+      { name: "Dania Beach", link: "/pest-control-dania-beach/" }
     ],
     faqs: [
       {
@@ -335,6 +342,7 @@ module.exports = [
     title: "Residential & Commercial Pest Control in Oakland Park, FL",
     metaDescription: "Oakland Park pest exterminator. We provide top-rated termite, rodent, roach, and ant control in Lloyd Estates and Central Oakland Park.",
     h1: "Pest Control in Oakland Park, FL",
+    cardDescription: "Pest control for Oakland Park homes, duplexes, small businesses, restaurants, warehouses, and rental properties needing help with roaches, rodents, ants, mosquitoes, termites, and prevention.",
     intro: "Oakland Park is a thriving community with a mix of industrial corridors, culinary districts, and residential neighborhoods. Older home structures, combined with commercial utility areas, create opportunities for opportunistic pests like rats, cockroaches, and ants to establish nests.",
     commonPests: [
       { name: "Roof Rats & Mice", link: "/rodent-control/" },
@@ -376,6 +384,7 @@ module.exports = [
     title: "Coastal & Maritime Pest Control in Dania Beach, FL",
     metaDescription: "Professional pest control in Dania Beach, FL. Specialized termite, rodent, cockroach, and bird exclusion near Dania Beach Marina and neighborhoods.",
     h1: "Pest Control in Dania Beach, FL",
+    cardDescription: "Pest control for Dania Beach homes, coastal properties, rental units, restaurants, warehouses, and commercial spaces facing South Florida humidity, rodents, roaches, mosquitoes, and termite pressure.",
     intro: "Dania Beach, home to beautiful beaches, marinas, and historic properties, faces unique coastal pest pressure. Maritime proximity increases moisture levels, attracting pests like cockroaches and nesting birds to residential roofs, boat docks, and commercial waterfront areas.",
     commonPests: [
       { name: "Pigeons & Marine Birds", link: "/pigeon-bird-control/" },
@@ -411,19 +420,4 @@ module.exports = [
       }
     ]
   }
-];
-
-// Let's perform a minor adjustment on the nearbyCities lists where self-linking was observed:
-// Sunrise nearbyCities has "Sunrise" as a third item. Let's make sure it is "Plantation", "Weston", "Oakland Park"
-module.exports[6].nearbyCities = [
-  { name: "Weston", link: "/pest-control-weston/" },
-  { name: "Plantation", link: "/pest-control-plantation/" },
-  { name: "Oakland Park", link: "/pest-control-oakland-park/" }
-];
-
-// Wilton Manors nearbyCities has "Wilton Manors" as a third item. Let's make sure it is "Fort Lauderdale", "Oakland Park", "Dania Beach"
-module.exports[7].nearbyCities = [
-  { name: "Fort Lauderdale", link: "/pest-control-fort-lauderdale/" },
-  { name: "Oakland Park", link: "/pest-control-oakland-park/" },
-  { name: "Dania Beach", link: "/pest-control-dania-beach/" }
 ];
