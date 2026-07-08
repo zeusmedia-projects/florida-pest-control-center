@@ -369,41 +369,52 @@ function initProcessTimeline() {
   const steps = document.querySelectorAll('.process-step');
   if (!container || !progressLine || steps.length === 0) return;
 
-  const handleScroll = () => {
-    const rect = container.getBoundingClientRect();
-    const triggerStart = window.innerHeight * 0.85;
-    const triggerEnd = window.innerHeight * 0.15;
-    const totalHeight = rect.height;
+  const isDesktop = () => window.innerWidth >= 768;
 
-    // Calculate progression based on center view
-    const scrolledPx = triggerStart - rect.top;
-    const scrollRangePx = triggerStart - triggerEnd + totalHeight - window.innerHeight;
+  const updateProgressLine = () => {
+    let maxRevealedIdx = -1;
+    steps.forEach((step, idx) => {
+      if (step.classList.contains('revealed')) {
+        maxRevealedIdx = Math.max(maxRevealedIdx, idx);
+      }
+    });
 
-    let percent = Math.max(0, Math.min(100, (scrolledPx / scrollRangePx) * 100));
+    // Progression mapped cleanly from index:
+    // 0 -> 0%
+    // 1 -> 25%
+    // 2 -> 50%
+    // 3 -> 75%
+    // 4 -> 100%
+    const percent = maxRevealedIdx <= 0 ? 0 : (maxRevealedIdx / 4) * 100;
 
-    const isDesktop = window.innerWidth >= 768;
-    if (isDesktop) {
+    if (isDesktop()) {
       progressLine.style.width = `${percent}%`;
       progressLine.style.height = '100%';
     } else {
       progressLine.style.height = `${percent}%`;
       progressLine.style.width = '100%';
     }
-
-    steps.forEach((step, idx) => {
-      // 5 steps map to 0%, 20%, 40%, 60%, 80% progression points
-      const revealPercent = idx * 20;
-      if (percent >= revealPercent) {
-        step.classList.add('revealed');
-      } else {
-        step.classList.remove('revealed');
-      }
-    });
   };
 
-  window.addEventListener('scroll', handleScroll);
-  window.addEventListener('resize', handleScroll);
-  handleScroll();
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('revealed');
+        updateProgressLine();
+      }
+    });
+  }, {
+    // Trigger when step bubble gets within the bottom 20% of viewport
+    rootMargin: '0px 0px -15% 0px',
+    threshold: 0.1
+  });
+
+  steps.forEach(step => {
+    observer.observe(step);
+  });
+
+  window.addEventListener('resize', updateProgressLine);
+  updateProgressLine();
 }
 
 /**
