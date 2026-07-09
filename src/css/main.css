@@ -930,6 +930,7 @@ img {
   color: var(--color-accent);
   font-size: 1.75rem;
   margin-bottom: 1rem;
+  padding-right: 85px; /* Avoid overlap with the Best Value ribbon badge */
 }
 
 .plan-card p {
