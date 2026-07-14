@@ -643,14 +643,14 @@ img {
 }
 
 .hero-actions .btn-secondary {
-  border-color: var(--color-secondary);
-  color: var(--color-secondary);
+  border-color: var(--color-accent);
+  color: var(--color-accent);
 }
 
 .hero-actions .btn-secondary:hover {
-  background-color: var(--color-secondary);
-  color: var(--bg-white);
-  border-color: var(--color-secondary);
+  background-color: var(--color-accent);
+  color: var(--color-text);
+  border-color: var(--color-accent);
 }
 
 .hero-trust {
