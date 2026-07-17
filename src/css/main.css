@@ -1968,7 +1968,7 @@ details.disclosure[open] summary::after {
   position: relative;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1440px) {
   .process-wand-overlay {
     position: absolute;
     top: 0;
@@ -2024,7 +2024,7 @@ details.disclosure[open] summary::after {
   }
 }
 
-@media (max-width: 767px) {
+@media (max-width: 1439px) {
   .process-wand-overlay {
     display: none;
   }
