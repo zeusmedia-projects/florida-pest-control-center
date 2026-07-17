@@ -743,6 +743,7 @@ img {
   background-color: #0F2D21;
 }
 
+.hero-bg-video,
 .hero-bg-img {
   position: absolute;
   top: 0;
