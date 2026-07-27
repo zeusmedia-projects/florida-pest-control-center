@@ -301,8 +301,17 @@ img {
   display: block;
 }
 
+/* Toggle visibility for desktop vs mobile Zeus button instances */
+.zeus-back-button-mobile {
+  display: none !important;
+}
+
 @media (max-width: 767px) {
-  .zeus-back-button {
+  .zeus-back-button-desktop {
+    display: none !important;
+  }
+  .zeus-back-button-mobile {
+    display: inline-flex !important;
     position: fixed;
     left: 50%;
     bottom: 74px; /* Hovering 10px above the 64px sticky bottom CTA bar */
