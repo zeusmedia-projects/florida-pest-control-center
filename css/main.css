@@ -313,18 +313,6 @@ img {
   }
 }
 
-@media (min-width: 768px) and (max-width: 1023px) {
-  .zeus-back-button {
-    position: fixed;
-    left: 50%;
-    bottom: 24px; /* Hovering near the bottom since there is no sticky bottom CTA bar on tablet */
-    top: auto;
-    transform: translateX(-50%);
-    margin: 0;
-    z-index: 101;
-  }
-}
-
 .logo {
   display: flex;
   align-items: center;
